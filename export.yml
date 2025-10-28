@@ -1,0 +1,15 @@
+# cat export.yaml 
+- name: export the C inv
+  hosts: localhost
+  tasks:
+    - name: Export inventory
+      ansible.controller.export:
+        inventory: 'Constructed Inventory - combining East and West'
+        controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
+        controller_username: "admin"
+        controller_password: "aap"
+      register: inventory_export
+    - name: copy
+      copy:
+        content: "{{ inventory_export  }}"
+        dest: export.log
