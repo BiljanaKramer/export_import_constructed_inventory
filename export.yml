@@ -12,4 +12,7 @@
     - name: copy
       copy:
         content: "{{ inventory_export  }}"
-        dest: export.log
+        dest: /home/aap/export.log
+        owner: aap
+        group: aap
+        mode: '0644'
