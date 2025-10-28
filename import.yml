@@ -1,6 +1,6 @@
 # cat import.yml 
 - name: export the C inv
-  hosts: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
+  hosts: localhost
   tasks:
     - name: Read inventory file
       ansible.builtin.include_vars:
