@@ -12,6 +12,11 @@
     - name: debug
       debug: 
         var: inventory_export
+    - name: Ensure directory exists
+      file:
+        path: /home/aap
+        state: directory
+        mode: '0755'
     - name: copy
       copy:
         content: "{{ inventory_export  }}"
