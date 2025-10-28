@@ -4,7 +4,7 @@
   tasks:
     - name: Read inventory file
       ansible.builtin.include_vars:
-         file: /root/export.log 
+         file: /home/aap/export.log 
          name: inventory_export
     - name: Convert inventory vars to nice json
       ansible.builtin.set_fact:
