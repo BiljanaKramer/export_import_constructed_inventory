@@ -8,19 +8,22 @@
         controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
         controller_username: "admin"
         controller_password: "aap"
+        inventories:
+          - "Constructed Inventory - combining East and West"
       register: inventory_export
+      
     - name: debug
       debug: 
         var: inventory_export
-    - name: Ensure directory exists
-      file:
-        path: /tmp
-        state: directory
-        mode: '0755'
-    - name: copy
-      copy:
-        content: "{{ inventory_export  }}"
-        dest: /tmp/export.log
-        owner: root
-        group: root
-        mode: '0644'
+   # - name: Ensure directory exists
+   #  file:
+   #     path: /tmp
+   #     state: directory
+   #     mode: '0755'
+   # - name: copy
+   #   copy:
+   #     content: "{{ inventory_export  }}"
+   #     dest: /tmp/export.log
+   #     owner: root
+   #     group: root
+   #     mode: '0644'
