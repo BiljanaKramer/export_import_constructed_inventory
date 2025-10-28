@@ -8,8 +8,6 @@
         controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
         controller_username: "admin"
         controller_password: "aap"
-        inventories:
-          - "Constructed Inventory - combining East and West"
       register: inventory_export
       
     - name: debug
