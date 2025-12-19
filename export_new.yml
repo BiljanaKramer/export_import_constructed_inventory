@@ -8,6 +8,9 @@
     controller_host: vm-10-1-230-56.ans.cee.ral3.lab.eng.rdu2.redhat.com
 
   tasks:
+    - name: Show controller collection path
+      command: ansible-doc -t module ansible.controller.export
+      
     - ansible.controller.export:
         inventory: "Test Construct Inventory"
         aap_token: "{{ aap_token }}"
