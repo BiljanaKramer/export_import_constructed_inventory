@@ -8,8 +8,12 @@
     controller_host: vm-10-1-230-56.ans.cee.ral3.lab.eng.rdu2.redhat.com
 
   tasks:
-    - name: Show controller collection path
-      command: ansible-doc -t module ansible.controller.export
+    - name: Show ansible.controller collection version
+      ansible.builtin.command: ansible-galaxy collection list ansible.controller
+      register: controller_collection
+
+    - debug:
+        var: controller_collection.stdout
       
     - ansible.controller.export:
         inventory: "Test Construct Inventory"
