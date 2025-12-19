@@ -1,0 +1,22 @@
+---
+- name: Export inv
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    aap_token: "b767041e30207a2ef5ab75b4d35545083d3c8d2e"
+    controller_host: vm-10-1-230-56.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+  tasks:
+    - ansible.controller.export:
+        inventory: "Test Construct Inventory"
+        aap_token: "{{ aap_token }}"
+        controller_host: "{{ controller_host }}"
+        validate_certs: false
+      environment:
+        AWXKIT_API_BASE_PATH: /api/controller/
+        CONTROLLER_OPTIONAL_API_URLPATTERN_PREFIX: /api/controller/
+      register: inventory
+
+    - ansible.builtin.debug:
+        var: inventory
