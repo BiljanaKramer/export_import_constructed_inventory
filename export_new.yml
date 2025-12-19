@@ -16,11 +16,11 @@
         var: controller_collection.stdout
         
     - name: Show awxkit version
-      ansible.builtin.command: python3 -c "import awxkit; print(awxkit.__version__)"
-      register: awxkit_version
+      ansible.builtin.command: pip3 show awxkit
+      register: awxkit_info
 
     - debug:
-        var: awxkit_version.stdout
+        var: awxkit_info.stdout
 
       
     - ansible.controller.export:
