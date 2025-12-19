@@ -5,9 +5,9 @@
     - name: Export inventory
       ansible.controller.export:
         inventory: 'Constructed Inventory - combining East and West'
-        controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
-        controller_username: "admin"
-        controller_password: "aap"
+        controller_host: "{{ controller_host }}"
+        controller_username: "{{ controller_username }}"
+        controller_password: "{{ controller_password }}"
       register: inventory_export
       
     - name: debug
