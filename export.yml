@@ -13,6 +13,11 @@
     - name: debug
       debug: 
         var: inventory_export
+
+    - name: Set inventory_export
+      ansible.builtin.set_stats:
+        data:
+          exported_inventory: "{{ inventory_export }}"
    # - name: Ensure directory exists
    #  file:
    #     path: /tmp
