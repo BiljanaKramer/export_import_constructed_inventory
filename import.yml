@@ -1,20 +1,17 @@
 # cat import.yml 
-- name: export the C inv
+- name: import the C inv
   hosts: localhost
+  gather_facts: false
   tasks:
-    - name: Read inventory file
-      ansible.builtin.include_vars:
-         file: "{{ exported_inventory }}"
-         name: inventory_export
-    - name: Convert inventory vars to nice json
-      ansible.builtin.set_fact:
-        updated_inventory_export: "{{ inventory_export | to_nice_json }}"
-    - debug: 
-        var: updated_inventory_export
+
+    - name: Debug exported inventory
+      debug:
+        var: exported_inventory
+
     - name: Import inventories
       ansible.controller.import:
-        controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com 
+        controller_host: vm-10-1-230-160.ans.cee.ral3.lab.eng.rdu2.redhat.com
         controller_username: "admin"
         controller_password: "aap"
         validate_certs: false
-        assets: "{{ updated_inventory_export | from_json() | json_query('assets') }}"
+        assets: "{{ exported_inventory.assets }}"
