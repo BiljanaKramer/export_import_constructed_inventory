@@ -14,6 +14,14 @@
 
     - debug:
         var: controller_collection.stdout
+        
+    - name: Show awxkit version
+      ansible.builtin.command: python3 -c "import awxkit; print(awxkit.__version__)"
+      register: awxkit_version
+
+    - debug:
+        var: awxkit_version.stdout
+
       
     - ansible.controller.export:
         inventory: "Test Construct Inventory"
